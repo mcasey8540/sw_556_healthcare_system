@@ -21,22 +21,20 @@ public class HealthCareSystem2 {
      */
     public static void main(String[] args) {
         
-        //create 1 user record
+        //step 1 - create 1 user record
         User user = HealthcareFactory.createUser();
         
-        //create 3 medical records
+        //step 2 - create 3 medical records
         List<MedicalRecord> medicalRecords = HealthcareFactory.createMedicalRecords();
         
-        //Authentication for user 
-        
-        //step 1 - collect user input
+        //step 3 - collect user input
         Scanner s = new Scanner(System.in);
         System.out.print( "Enter username: "  );
         String userName = s.nextLine();
         System.out.print( "Enter password: "  );
         String password = s.nextLine();
         
-        //step 2 - authenticate user
+        //step 4 - authenticate user
         Authentication authentication = new Authentication();
         User authenticatedUser = authentication.authenticateUser(user, userName, password);
         
@@ -45,7 +43,7 @@ public class HealthCareSystem2 {
             return;
         }
 
-        //step 3 - authorize viewing of medical records for user
+        //step 5 - authorize viewing of medical records for user
         Authorization authorization = new Authorization();
         authorization.displayUserMedicalRecords(medicalRecords, authenticatedUser);
 

@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author mcasey
  */
-public class HealthCareSystem2 {
+public class Main {
 
     /**
      * @param args the command line arguments

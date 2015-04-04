@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Authorization {
     
-    public void displayUserMedicalRecords(List<MedicalRecord> medicalRecords, User authenticatedUser){
+    public boolean displayedUserMedicalRecords(List<MedicalRecord> medicalRecords, User authenticatedUser){
         
         if(medicalRecords != null && authenticatedUser !=null)
         {
@@ -28,13 +28,12 @@ public class Authorization {
                    System.out.println("Admitance Date: " + mr.getAdmitted_At().toString());
                    System.out.println("Current Procedure Code: " + mr.getCurrent_Proc_Code());
                    System.out.println("Billing Amount: " + mr.getBilling_Amt());
-                   System.out.println("Billing Due Date: " + mr.getBill_Due_At().toString());                   
+                   System.out.println("Billing Due Date: " + mr.getBill_Due_At().toString());
+                   return true;
                 }
             }
-            
-        }else{
-            System.out.println( "Null Exception: MedicalRecords or AuthenticatedUser");
+            return false;          
         }
-        
+          return false;
     }    
 }

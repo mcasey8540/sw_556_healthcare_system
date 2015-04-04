@@ -15,7 +15,7 @@ public class Authentication {
 
     public User authenticateUser(List<User> users, String userName, String password)
     {
-        if(users != null && userName !=null && password != null)
+        if(users != null && userName != null && password != null)
         {
             for(int i = 0; i < users.size(); i++)
             {

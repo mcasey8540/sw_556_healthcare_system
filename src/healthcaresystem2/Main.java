@@ -45,7 +45,13 @@ public class Main {
 
         //step 5 - authorize viewing of medical records for user
         Authorization authorization = new Authorization();
-        authorization.displayUserMedicalRecords(medicalRecords, authenticatedUser);
+        boolean displaySuccessful = authorization.displayedUserMedicalRecords(medicalRecords, authenticatedUser);
+        if(displaySuccessful)
+        {
+           System.out.println( "Thank you for using the healthcare record system. Goodbye");
+        }else{
+           System.out.println( "Authorization Failed: Either medical record doesn't exist or user does not have access."); 
+        }
 
         return;
         

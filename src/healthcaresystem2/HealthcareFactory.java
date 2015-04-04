@@ -14,14 +14,35 @@ import java.util.List;
  * @author mcasey
  */
 public class HealthcareFactory {
-      public static User createUser(){
         
+      public static List<User> createUsers(){
+          
+        List<User> users = new ArrayList<User>();
+        
+        //user record 1
         User user = new User();       
 	user.setUsername("johndoe");
 	user.setPassword("abc123");
         user.setId(1);
-          
-        return user;        
+        
+        //user record 2
+        User user2 = new User();       
+	user2.setUsername("janedoe");
+	user2.setPassword("ABC123");
+        user2.setId(2);        
+        
+        //user record 3
+        User user3 = new User();       
+	user3.setUsername("JackDoe");
+	user3.setPassword("abc123");
+        user3.setId(3); 
+        
+        //add users to list
+        users.add(user);
+        users.add(user2);
+        users.add(user3);
+               
+        return users;        
     } 
     
     public static List<MedicalRecord> createMedicalRecords(){

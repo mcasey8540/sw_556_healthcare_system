@@ -21,8 +21,8 @@ public class HealthCareSystem2 {
      */
     public static void main(String[] args) {
         
-        //step 1 - create 1 user record
-        User user = HealthcareFactory.createUser();
+        //step 1 - create 3 user records
+        List<User> users = HealthcareFactory.createUsers();
         
         //step 2 - create 3 medical records
         List<MedicalRecord> medicalRecords = HealthcareFactory.createMedicalRecords();
@@ -36,10 +36,10 @@ public class HealthCareSystem2 {
         
         //step 4 - authenticate user
         Authentication authentication = new Authentication();
-        User authenticatedUser = authentication.authenticateUser(user, userName, password);
+        User authenticatedUser = authentication.authenticateUser(users, userName, password);
         
         if(authenticatedUser == null){
-            System.out.println( "Username or password Authentication Failed. Please run again.");
+            System.out.println( "Authentication Failed: Username or password invalid. Please run again.");
             return;
         }
 

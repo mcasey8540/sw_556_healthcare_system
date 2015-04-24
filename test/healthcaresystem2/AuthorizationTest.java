@@ -6,6 +6,7 @@
 package healthcaresystem2;
 
 import java.util.List;
+import java.util.Random;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -32,16 +33,69 @@ public class AuthorizationTest {
      * Test of displayedUserMedicalRecords method, of class Authorization.
      */
     @Test
-    public void testDisplayedUserMedicalRecords() {
-        System.out.println("displayedUserMedicalRecords");
-        List<MedicalRecord> medicalRecords = null;
-        User authenticatedUser = null;
+    public void testAuthorizationPositiveIntegersFuzzTest() {
+        System.out.println("authorization Fuzz Test with Randomly Generated Intgers");
+        List<MedicalRecord> medicalRecords = HealthcareFactory.createMedicalRecords();
+        
+        Random rand = new Random();
+        
+        //random user id 
+        int userId = rand.nextInt(2147483647) + 1;
+        
+        System.out.println("Testing userid authorization: " + userId);
+
+        User user = new User();       
+	user.setUsername("johndoe");
+	user.setPassword("abc123");
+        user.setId(userId);
+        
         Authorization instance = new Authorization();
-        boolean expResult = false;
-        boolean result = instance.displayedUserMedicalRecords(medicalRecords, authenticatedUser);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean result = instance.displayedUserMedicalRecords(medicalRecords, user);
+        assertFalse(result);
+
     }
+    
+    @Test
+    public void testAuthorizationNegativeIntegersFuzzTest() {
+        System.out.println("authorization Fuzz Test with Randomly Generated Negative Intgers");
+        List<MedicalRecord> medicalRecords = HealthcareFactory.createMedicalRecords();
+        
+        Random rand = new Random();
+        
+        //random user id 
+        int userId = rand.nextInt(-2147483647) + 1;
+        
+        System.out.println("Testing userid authorization: " + userId);
+
+        User user = new User();       
+	user.setUsername("johndoe");
+	user.setPassword("abc123");
+        user.setId(userId);
+        
+        Authorization instance = new Authorization();
+        boolean result = instance.displayedUserMedicalRecords(medicalRecords, user);
+        assertFalse(result);
+
+    }    
+    
+    @Test
+    public void testAuthorizationNullFuzzTest() {
+        System.out.println("authorization Fuzz Test with Null Intgers");
+        List<MedicalRecord> medicalRecords = HealthcareFactory.createMedicalRecords();
+        
+        Random rand = new Random();
+                
+        System.out.println("Testing userid authorization: " + null);
+
+        User user = new User();       
+	user.setUsername("johndoe");
+	user.setPassword("abc123");
+        user.setId(null);
+        
+        Authorization instance = new Authorization();
+        boolean result = instance.displayedUserMedicalRecords(medicalRecords, user);
+        assertFalse(result);
+
+    }     
     
 }

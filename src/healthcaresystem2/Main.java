@@ -31,8 +31,10 @@ public class Main {
         Scanner s = new Scanner(System.in);
         System.out.print( "Enter username: "  );
         String userName = s.nextLine();
+        //String userName = args[0];
         System.out.print( "Enter password: "  );
         String password = s.nextLine();
+        //String password = args[1];
         
         //step 4 - authenticate user
         Authentication authentication = new Authentication();
